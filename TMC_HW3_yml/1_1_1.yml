@@ -1,0 +1,15 @@
+input: '111+111'
+blank: ' '
+start state: q0
+table:
+  # find plus and replace + -> 1
+  q0:
+    1: R
+    +: {write: 1, R: q1}
+  # delete last 1
+  q1:
+    1: R
+    ' ': {L: q2}
+  q2:
+    1: {write: ' ', L: done}
+  done:

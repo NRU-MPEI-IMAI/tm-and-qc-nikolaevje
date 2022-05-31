@@ -1,0 +1,22 @@
+input: '001122'
+blank: ' '
+start state: q0
+table:
+  q0:
+    0: {write: x, R: q1}
+    x: R
+    [1, 2]: {R: qR}
+    ' ': {R: qA}
+  q1:
+    [0, x]: R
+    1: {write: x, R: q2}
+    [2, ' ']: {R: qR}
+  q2:
+    [1, x]: R
+    2: {write: x, L: q3}
+    ' ': {R: qR}
+  q3:
+    [0, 1, 2, x]: L
+    ' ': {R: q0}
+  qA:
+  qR:
